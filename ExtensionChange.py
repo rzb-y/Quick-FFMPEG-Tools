@@ -9,8 +9,6 @@ for f in files:
 directory = "."
 files_in_directory = os.listdir(directory)
 filtered_files = [file for file in files_in_directory if file.endswith("py")]
-filtered_files.extend([file for file in files_in_directory if file.endswith("m4a")])
-filtered_files.extend([file for file in files_in_directory if file.endswith("mp4")])
 filtered_files.extend([file for file in files_in_directory if file.endswith(".DS_Store")])
 
 for files in filtered_files:
@@ -21,9 +19,6 @@ if not os.path.exists("output"):
 
 for i in list:
     video = ffmpeg.input(i)
-    if i.startswith('[DLK'):
-        strr = "./output/" + i[10:-3] + ".mp4"
-    else:
-        strr = "./output/" + i[:-3] + ".mp4"
+    strr = "./output/" + i[:-3] + ".mov"
     out = ffmpeg.output(video, strr, acodec='copy', vcodec='copy')
     out.run()
