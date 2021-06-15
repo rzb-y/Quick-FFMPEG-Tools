@@ -20,9 +20,6 @@ if not os.path.exists("output"):
 
 for i in list:
     video = ffmpeg.input(i)
-    if i.startswith('[DLK'):
-        strr = "./output/" + i[10:-3] + ".mov"
-    else:
-        strr = "./output/" + i[:-3] + ".mov"
+    strr = "./output/" + i[:-3] + ".mov"
     out = ffmpeg.output(video, strr, vf="yadif=1")
     out.run()
